@@ -47,7 +47,7 @@ module OmniAuth
           endpoint = data["api_endpoint"]
           apikey = "#{@access_token.token}-#{data['dc']}"
           byebug
-          response = @access_token.get("#{endpoint}/2.0/helper/account-details?apikey=#{apikey}").parsed
+          response = @access_token.get("#{endpoint}/3.0?apikey=#{apikey}").parsed
           if response["error"]
             case response["code"]
             when 109
