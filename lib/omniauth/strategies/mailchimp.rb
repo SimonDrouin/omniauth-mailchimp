@@ -1,5 +1,6 @@
 require 'omniauth/strategies/oauth2'
 require 'multi_json'
+require "byebug"
 
 module OmniAuth
   module Strategies
@@ -45,6 +46,7 @@ module OmniAuth
           data = user_data
           endpoint = data["api_endpoint"]
           apikey = "#{@access_token.token}-#{data['dc']}"
+          byebug
           response = @access_token.get("#{endpoint}/2.0/helper/account-details?apikey=#{apikey}").parsed
           if response["error"]
             case response["code"]
